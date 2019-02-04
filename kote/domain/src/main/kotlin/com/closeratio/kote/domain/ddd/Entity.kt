@@ -14,14 +14,22 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.domain.ddd
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+abstract class Entity<T>(val id: T) {
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (javaClass != other?.javaClass) return false
+
+		other as Entity<*>
+
+		if (id != other.id) return false
+
+		return true
+	}
+
+	override fun hashCode(): Int {
+		return id?.hashCode() ?: 0
 	}
 }

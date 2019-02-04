@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.infrastructure.commands
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import org.axonframework.modelling.command.TargetAggregateIdentifier
+import java.util.*
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
-	}
-}
+data class CreateUserCommand(
+		@TargetAggregateIdentifier
+		val userId: UUID,
+		val username: String,
+		val displayName: String,
+		val emailAddress: String)

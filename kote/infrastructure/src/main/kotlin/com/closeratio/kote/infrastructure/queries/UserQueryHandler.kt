@@ -14,14 +14,27 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.infrastructure.queries
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import com.closeratio.kote.infrastructure.events.UserCreatedEvent
+import org.axonframework.eventhandling.EventHandler
+import org.axonframework.queryhandling.QueryHandler
+import org.springframework.stereotype.Service
+import java.util.*
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
+@Service
+class UserQueryHandler {
+
+	private val ids = hashSetOf<UUID>()
+
+	@EventHandler
+	fun handle(event: UserCreatedEvent) {
+		ids.add(event.userId)
 	}
+
+	@QueryHandler
+	fun handle(query: GetAllUserIDsQuery): GetAllUserIDsResponse {
+		return GetAllUserIDsResponse(ids)
+	}
+
 }

@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.infrastructure.config
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import org.springframework.context.annotation.Configuration
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
-	}
+@Configuration
+class InfrastructureConfig {
+
+
 }

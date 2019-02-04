@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.application
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
+@SpringBootApplication
+open class KoteApplication {
+
+	companion object {
+		@JvmStatic
+		fun main(args: Array<String>) {
+			SpringApplication.run(KoteApplication::class.java, *args)
+		}
 	}
+
 }

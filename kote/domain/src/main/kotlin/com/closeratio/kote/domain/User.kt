@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.domain
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import com.closeratio.kote.domain.ddd.UUIDEntity
+import java.util.*
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
-	}
+class User(
+		id: UUID,
+		val username: String,
+		var displayName: String,
+		var emailAddress: String
+): UUIDEntity(id) {
+
 }

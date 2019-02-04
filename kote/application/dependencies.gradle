@@ -18,5 +18,9 @@ project(':kote:application') {
 	dependencies {
 		compile project(':kote:domain')
 		compile project(':kote:infrastructure')
+
+		compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+
+		testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 	}
 }

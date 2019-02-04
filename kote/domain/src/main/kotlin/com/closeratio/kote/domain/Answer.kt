@@ -14,14 +14,15 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.domain
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import com.closeratio.kote.domain.ddd.StringValueObject
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
+class Answer(
+		value: String
+) : StringValueObject(value) {
+
+	override fun toString(): String {
+		return "Answer($value)"
 	}
 }

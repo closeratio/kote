@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.application.beans
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+class AddUserRequest {
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
-	}
+	lateinit var username: String
+	lateinit var displayName: String
+	lateinit var emailAddress: String
+
 }

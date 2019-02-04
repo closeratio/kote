@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.infrastructure.events
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import java.util.*
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
-	}
-}
+data class UserDisplayNameUpdatedEvent(
+		val userId: UUID,
+		val newDisplayName: String)

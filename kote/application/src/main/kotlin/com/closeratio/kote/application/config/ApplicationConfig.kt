@@ -14,14 +14,25 @@
  * limitations under the License.
  */
 
-project(':kote:infrastructure') {
-	dependencies {
-		compile project(':kote:domain')
+package com.closeratio.kote.application.config
 
-		compile("org.springframework.boot:spring-boot:$springBootVersion")
-		compile("org.axonframework:axon-spring-boot-starter:$axonStarterVersion")
-		compile('ch.qos.logback:logback-classic:1.2.3')
+import com.closeratio.kote.application.UserController
+import org.axonframework.commandhandling.gateway.CommandGateway
+import org.axonframework.queryhandling.QueryGateway
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
-		testCompile("org.axonframework:axon-test:$axonStarterVersion")
+@Configuration
+open class ApplicationConfig {
+
+	@Bean
+	open fun userController(
+			queryGateway: QueryGateway,
+			commandGateway: CommandGateway
+	): UserController {
+		return UserController(
+				queryGateway,
+				commandGateway)
 	}
+
 }
