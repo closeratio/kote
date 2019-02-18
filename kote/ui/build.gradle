@@ -14,9 +14,13 @@
  * limitations under the License.
  */
 
-rootProject.name = 'kote'
+apply from: 'dependencies.gradle'
 
-include ':kote:domain'
-include ':kote:application'
-include ':kote:infrastructure'
-include ':kote:ui'
+apply plugin: 'kotlin2js'
+apply plugin: 'org.jetbrains.kotlin.frontend'
+
+compileKotlin2Js {
+	kotlinOptions.outputFile = "${projectDir}/web/output.js"
+	kotlinOptions.moduleKind = "amd"
+	kotlinOptions.sourceMap = true
+}

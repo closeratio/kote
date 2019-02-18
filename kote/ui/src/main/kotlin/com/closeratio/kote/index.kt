@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-rootProject.name = 'kote'
+package com.closeratio.kote
 
-include ':kote:domain'
-include ':kote:application'
-include ':kote:infrastructure'
-include ':kote:ui'
+fun main(args: Array<String>) {
+
+}

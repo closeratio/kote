@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-rootProject.name = 'kote'
-
-include ':kote:domain'
-include ':kote:application'
-include ':kote:infrastructure'
-include ':kote:ui'
+project(':kote:ui') {
+	dependencies {
+		implementation "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
+	}
+}

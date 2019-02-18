@@ -16,7 +16,7 @@
 
 buildscript {
     ext {
-        kotlinVersion = '1.3.20'
+        kotlinVersion = '1.3.21'
         junitVersion = '5.3.1'
         springBootVersion = '2.0.5.RELEASE'
         axonStarterVersion = '4.0.3'
@@ -34,27 +34,29 @@ buildscript {
 
 allprojects { p ->
 
-    apply plugin: 'kotlin'
-    apply plugin: 'java'
-
     repositories {
         mavenCentral()
     }
 
-    compileKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
+    if (p.name != 'ui') {
+        apply plugin: 'kotlin'
 
-    compileTestKotlin {
-        kotlinOptions.jvmTarget = "1.8"
-    }
+        compileKotlin {
+            kotlinOptions.jvmTarget = "1.8"
+        }
 
-    dependencies {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
-        implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+        compileTestKotlin {
+            kotlinOptions.jvmTarget = "1.8"
+        }
 
-        testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
-        testImplementation 'org.hamcrest:hamcrest-all:1.3'
+        dependencies {
+            implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}"
+            implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+
+            testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+            testImplementation 'org.hamcrest:hamcrest-all:1.3'
+        }
+
     }
 
 }
