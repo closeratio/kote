@@ -18,8 +18,12 @@ buildscript {
 	ext {
 		kotlinFrontendVersion = '0.0.44'
 		kotlinxHtmlVersion = '0.6.10'
+
 		reactVersion = "16.6.0-pre.68-kotlin-${kotlinVersion}"
 		reactDomVersion = "16.6.0-pre.68-kotlin-${kotlinVersion}"
+		styledVersion = "1.0.0-pre.67-kotlin-${kotlinVersion}"
+
+		muirwikVersion = '0.2.1'
 	}
 
 	repositories {

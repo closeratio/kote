@@ -20,5 +20,7 @@ project(':kote:ui') {
 		implementation "org.jetbrains.kotlinx:kotlinx-html-js:${kotlinxHtmlVersion}"
 		implementation "org.jetbrains:kotlin-react:${reactVersion}"
 		implementation "org.jetbrains:kotlin-react-dom:${reactDomVersion}"
+		implementation "org.jetbrains:kotlin-styled:${styledVersion}"
+		implementation "com.ccfraser.muirwik:muirwik-components:${muirwikVersion}"
 	}
 }
