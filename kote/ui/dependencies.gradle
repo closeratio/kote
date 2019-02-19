@@ -17,5 +17,8 @@
 project(':kote:ui') {
 	dependencies {
 		implementation "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
+		implementation "org.jetbrains.kotlinx:kotlinx-html-js:${kotlinxHtmlVersion}"
+		implementation "org.jetbrains:kotlin-react:${reactVersion}"
+		implementation "org.jetbrains:kotlin-react-dom:${reactDomVersion}"
 	}
 }

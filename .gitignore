@@ -3,3 +3,5 @@
 **/build
 **/out
 *.iml
+
+kote/ui/node_modules
