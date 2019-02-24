@@ -12,7 +12,6 @@
   "devDependencies": {
     "@jetbrains/kotlin-css": "^1.0.0-pre.67",
     "@jetbrains/kotlin-css-js": "^1.0.0-pre.67",
-    "@jetbrains/kotlin-extensions": "^1.0.1-pre.67",
     "react-scripts-kotlin": "3.0.3"
   },
   "scripts": {

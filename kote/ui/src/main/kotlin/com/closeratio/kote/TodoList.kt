@@ -39,3 +39,5 @@ class TodoList: RComponent<TodoProps, TodoState>() {
 	}
 
 }
+
+fun RBuilder.todoList() = child(TodoList::class) {}

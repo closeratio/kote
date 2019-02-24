@@ -28,7 +28,7 @@ class App: RComponent<RProps, RState>() {
 	override fun RBuilder.render() {
 		div("App-header") {
 			h2 {
-				+"Welcome to Kote"
+				+"Welcome to Kotea"
 			}
 		}
 		div("App") {
@@ -37,3 +37,5 @@ class App: RComponent<RProps, RState>() {
 	}
 
 }
+
+fun RBuilder.app() = child(App::class) {}

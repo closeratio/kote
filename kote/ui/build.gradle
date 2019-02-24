@@ -16,39 +16,37 @@
 
 buildscript {
 	ext {
-		kotlinFrontendVersion = '0.0.44'
 		kotlinxHtmlVersion = '0.6.10'
 
-		reactVersion = "16.6.0-pre.68-kotlin-${kotlinVersion}"
-		reactDomVersion = "16.6.0-pre.68-kotlin-${kotlinVersion}"
-		styledVersion = "1.0.0-pre.67-kotlin-${kotlinVersion}"
+		reactVersion = "16.6.0-pre.67"
+		reactDomVersion = "16.6.0-pre.67"
+		styledVersion = "1.0.0-pre.67"
 
 		muirwikVersion = '0.2.1'
 	}
 
 	repositories {
-		mavenCentral()
-		maven {
-			url "https://dl.bintray.com/kotlin/kotlin-eap"
-		}
+		jcenter()
+		maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
 	}
 
 	dependencies {
-		classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:${kotlinFrontendVersion}"
+		classpath "org.jetbrains.kotlin:kotlin-frontend-plugin:0.0.45"
 	}
 }
 
-apply plugin: 'kotlin2js'
+plugins {
+	id "kotlin2js"
+	id "com.moowork.node" version "1.2.0"
+}
+
 apply plugin: 'org.jetbrains.kotlin.frontend'
 
 sourceCompatibility = 1.8
 
 repositories {
-	mavenLocal()
-	mavenCentral()
 	jcenter()
 	maven { url "http://dl.bintray.com/kotlin/kotlin-dev" }
-	maven { url "http://dl.bintray.com/kotlinx/kotlinx" }
 	maven { url "http://dl.bintray.com/kotlin/kotlin-js-wrappers" }
 }
 
@@ -63,10 +61,11 @@ kotlinFrontend {
 		dependency "@jetbrains/kotlin-extensions"
 		dependency "@jetbrains/kotlin-react"
 	}
+
 	webpackBundle {
 		bundleName = "main"
-		sourceMapEnabled = false   // enable/disable source maps
-		contentPath = file("${projectDir}/public") // a file that represents a directory to be served by dev server)
+		sourceMapEnabled = true   // enable/disable source maps
+		contentPath = file("src/main/web") // a file that represents a directory to be served by dev server)
 		publicPath = "/"  // web prefix
 		host = "localhost" // dev server host
 		port = 8088   // dev server port
@@ -74,38 +73,12 @@ kotlinFrontend {
 	}
 }
 
-task copyDocs(type: Copy) {
-	println ":md-react:copyDocs: Copying to public directory"
-	from("${projectDir}/build/bundle") {
-		include "**/*.js"
-		include "*.js"
-	}
-	into "${projectDir}/public/static"
-	println ":md-react:copyDocs: Done copying"
-}
-
-task assembleWeb(type: Sync) {
-	configurations.compile.each { File file ->
-		from(zipTree(file.absolutePath), {
-			includeEmptyDirs = false
-			include { fileTreeElement ->
-				def path = fileTreeElement.path
-				(path.endsWith(".js") || path.endsWith(".map")) && (path.startsWith("META-INF/resources/") ||
-						!path.startsWith("META-INF/"))
-			}
-		})
-	}
-	from compileKotlin2Js.destinationDir
-	into "${projectDir}/build/classes/main"
-	dependsOn classes
-}
-
-//run.dependsOn copyDocs
-assemble.dependsOn assembleWeb
-copyDocs.dependsOn bundle
-//assemble.finalizedBy(copyDocs)
 compileKotlin2Js {
-	kotlinOptions.outputFile = "${projectDir}/build/classes/main/web.js"
-	kotlinOptions.moduleKind = "umd"
-	kotlinOptions.sourceMap = true
+	kotlinOptions {
+		outputFile = "$project.buildDir.path/js/${project.name}.js"
+		moduleKind = "commonjs"
+		sourceMap = true
+		metaInfo = true
+		main = "call"
+	}
 }
