@@ -17,27 +17,22 @@
 package com.closeratio.kote
 
 import com.ccfraser.muirwik.components.input.mInput
+import com.ccfraser.muirwik.components.mAppBar
 import com.ccfraser.muirwik.components.mButton
+import com.ccfraser.muirwik.components.mTypography
 import react.RBuilder
 import react.RComponent
-import react.dom.div
-import react.dom.form
 
 class TodoList: RComponent<TodoProps, TodoState>() {
 
 	override fun RBuilder.render() {
-		div("todoListMain") {
-			div("header") {
-				form {
-					mInput(placeholder = "Task") {
-					}
-					mButton("Add task") {
-					}
-				}
-			}
+		mAppBar {
+			mTypography("Kote")
+		}
+		mInput(placeholder = "Task") {
+		}
+		mButton("Add task") {
 		}
 	}
 
 }
-
-fun RBuilder.todoList() = child(TodoList::class) {}

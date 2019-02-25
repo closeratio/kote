@@ -58,8 +58,12 @@ kotlinFrontend {
 		dependency "react"
 		dependency "react-dom"
 		dependency "kotlin"
-		dependency "@jetbrains/kotlin-extensions"
-		dependency "@jetbrains/kotlin-react"
+		dependency "inline-style-prefixer"
+		dependency "kotlinx-html-js"
+		dependency "kotlin-react"
+		dependency "kotlin-react-dom"
+		dependency "kotlin-styled"
+		dependency "muirwik-components"
 	}
 
 	webpackBundle {
