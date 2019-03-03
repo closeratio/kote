@@ -14,29 +14,30 @@
  * limitations under the License.
  */
 
-package com.closeratio.kote
+package com.closeratio.kote.course
 
-import com.ccfraser.muirwik.components.*
-import react.RBuilder
-import react.RComponent
-import react.RProps
-import react.RState
-import styled.styledDiv
+class Course(
+		val name: String,
+		val description: String
+) {
 
-class NavBar: RComponent<RProps, RState>() {
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (other == null || this::class.js != other::class.js) return false
 
-	override fun RBuilder.render() {
-		styledDiv {
+		other as Course
 
-			mAppBar(position = MAppBarPosition.static) {
-				mToolbar {
-					mTypography(
-							"Kote",
-							variant = MTypographyVariant.h6,
-							color = MTypographyColor.inherit)
-				}
+		if (name != other.name) return false
 
-			}
-		}
+		return true
 	}
+
+	override fun hashCode(): Int {
+		return name.hashCode()
+	}
+
+	override fun toString(): String {
+		return "Course(name='$name')"
+	}
+
 }

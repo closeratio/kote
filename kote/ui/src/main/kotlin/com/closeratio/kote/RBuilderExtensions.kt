@@ -16,8 +16,17 @@
 
 package com.closeratio.kote
 
+import com.closeratio.kote.model.Lobby
 import react.RBuilder
 
 fun RBuilder.app() = child(App::class) {}
 
-fun RBuilder.todoList() = child(TodoList::class) {}
+fun RBuilder.navBar() = child(NavBar::class) {}
+
+fun RBuilder.joinLobbyButton() = child(JoinLobbyButton::class) {}
+
+fun RBuilder.createLobbyButton() = child(CreateLobbyButton::class) {}
+
+fun RBuilder.openLobbiesList(lobbies: List<Lobby>) = child(OpenLobbiesList::class) {
+	attrs.initialLobbies = lobbies
+}

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.closeratio.kote
+package com.closeratio.kote.course
 
 import com.ccfraser.muirwik.components.MButtonSize.small
 import com.ccfraser.muirwik.components.MColor.primary

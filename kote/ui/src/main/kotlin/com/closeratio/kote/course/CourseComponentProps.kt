@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.closeratio.kote
+package com.closeratio.kote.course
 
 import react.RProps
 
-class TodoProps: RProps {
-
-}
+class CourseComponentProps(
+		var course: Course
+): RProps

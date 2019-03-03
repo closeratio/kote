@@ -16,8 +16,11 @@
 
 package com.closeratio.kote
 
+import com.closeratio.kote.model.Lobby
 import react.RProps
 
-class CourseComponentProps(
-		var course: Course
-): RProps
+class OpenLobbiesListProps: RProps {
+
+	var initialLobbies: List<Lobby> = listOf()
+
+}

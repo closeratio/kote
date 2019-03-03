@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.closeratio.kote
+package com.closeratio.kote.course
 
 import com.ccfraser.muirwik.components.MGridSize.*
 import com.ccfraser.muirwik.components.MGridSpacing.spacing24
@@ -22,6 +22,7 @@ import com.ccfraser.muirwik.components.MTextFieldMargin.normal
 import com.ccfraser.muirwik.components.mGridContainer
 import com.ccfraser.muirwik.components.mGridItem
 import com.ccfraser.muirwik.components.mTextField
+import com.closeratio.kote.setStateWithCallback
 import kotlinx.css.padding
 import kotlinx.css.px
 import org.w3c.dom.HTMLInputElement

@@ -16,23 +16,17 @@
 
 package com.closeratio.kote
 
-import com.ccfraser.muirwik.components.input.mInput
-import com.ccfraser.muirwik.components.mAppBar
+import com.ccfraser.muirwik.components.MButtonVariant
 import com.ccfraser.muirwik.components.mButton
-import com.ccfraser.muirwik.components.mTypography
 import react.RBuilder
 import react.RComponent
+import react.RProps
+import react.RState
 
-class TodoList: RComponent<TodoProps, TodoState>() {
+class CreateLobbyButton: RComponent<RProps, RState>() {
 
 	override fun RBuilder.render() {
-		mAppBar {
-			mTypography("Kote")
-		}
-		mInput(placeholder = "Task") {
-		}
-		mButton("Add task") {
-		}
+		mButton("Create Lobby", primary = true, variant = MButtonVariant.contained)
 	}
 
 }

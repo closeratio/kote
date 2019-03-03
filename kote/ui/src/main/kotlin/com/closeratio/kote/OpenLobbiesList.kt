@@ -16,27 +16,38 @@
 
 package com.closeratio.kote
 
-import com.ccfraser.muirwik.components.*
+import com.ccfraser.muirwik.components.MTypographyVariant.h6
+import com.ccfraser.muirwik.components.list.mList
+import com.ccfraser.muirwik.components.list.mListItem
+import com.ccfraser.muirwik.components.mTypography
 import react.RBuilder
 import react.RComponent
-import react.RProps
-import react.RState
+import react.setState
 import styled.styledDiv
 
-class NavBar: RComponent<RProps, RState>() {
+class OpenLobbiesList: RComponent<OpenLobbiesListProps, OpenLobbiesListState>() {
+
+	override fun OpenLobbiesListState.init() {
+		lobbies = listOf()
+	}
+
+	override fun componentDidMount() {
+		setState {
+			lobbies = props.initialLobbies
+		}
+	}
 
 	override fun RBuilder.render() {
 		styledDiv {
-
-			mAppBar(position = MAppBarPosition.static) {
-				mToolbar {
-					mTypography(
-							"Kote",
-							variant = MTypographyVariant.h6,
-							color = MTypographyColor.inherit)
+			mTypography("Open lobbies", variant = h6)
+			mList {
+				state.lobbies.forEach {
+					mListItem(
+							primaryText = it.name,
+							secondaryText = it.description)
 				}
-
 			}
 		}
 	}
+
 }

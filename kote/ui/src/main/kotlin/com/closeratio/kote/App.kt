@@ -16,18 +16,48 @@
 
 package com.closeratio.kote
 
+import com.ccfraser.muirwik.components.MGridSize.Cells12
+import com.ccfraser.muirwik.components.mCssBaseline
+import com.ccfraser.muirwik.components.mGridContainer
+import com.ccfraser.muirwik.components.mGridItem
+import com.closeratio.kote.model.Lobby
+import kotlinx.css.padding
+import kotlinx.css.px
 import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
+import styled.css
 import styled.styledDiv
 
 class App: RComponent<RProps, RState>() {
 
 	override fun RBuilder.render() {
 		styledDiv {
+			mCssBaseline()
 			navBar()
-			courseList()
+
+			mGridContainer {
+				css {
+					padding(24.px)
+				}
+
+				mGridItem(xs = Cells12, sm = Cells12, lg = Cells12, xl = Cells12) {
+					openLobbiesList(listOf(
+							Lobby("Best lobby", "For best things"),
+							Lobby("OK lobby", "For OK things"),
+							Lobby("Bad lobby", "For not so good things")
+					))
+				}
+
+				mGridItem() {
+					joinLobbyButton()
+				}
+
+				mGridItem() {
+					createLobbyButton()
+				}
+			}
 		}
 	}
 

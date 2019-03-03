@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.closeratio.kote
+package com.closeratio.kote.course
 
 import react.RState
 
-class TodoState: RState {
-
-}
+class CourseListState(
+		var courses: List<Course>,
+		var searchString: String): RState

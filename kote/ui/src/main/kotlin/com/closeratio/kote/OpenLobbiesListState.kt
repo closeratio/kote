@@ -16,28 +16,12 @@
 
 package com.closeratio.kote
 
-class Course(
-		val name: String,
-		val description: String
-) {
+import com.closeratio.kote.model.Lobby
+import react.RState
 
-	override fun equals(other: Any?): Boolean {
-		if (this === other) return true
-		if (other == null || this::class.js != other::class.js) return false
+class OpenLobbiesListState(
+		var lobbies: List<Lobby>
+): RState
 
-		other as Course
 
-		if (name != other.name) return false
 
-		return true
-	}
-
-	override fun hashCode(): Int {
-		return name.hashCode()
-	}
-
-	override fun toString(): String {
-		return "Course(name='$name')"
-	}
-
-}

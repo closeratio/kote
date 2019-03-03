@@ -16,8 +16,20 @@
 
 package com.closeratio.kote
 
+import com.ccfraser.muirwik.components.MButtonVariant
+import com.ccfraser.muirwik.components.mButton
+import react.RBuilder
+import react.RComponent
+import react.RProps
 import react.RState
+import styled.styledDiv
 
-class CourseListState(
-		var courses: List<Course>,
-		var searchString: String): RState
+class JoinLobbyButton: RComponent<RProps, RState>() {
+
+	override fun RBuilder.render() {
+		styledDiv {
+			mButton("Join Lobby", primary = true, variant = MButtonVariant.contained)
+		}
+	}
+
+}
