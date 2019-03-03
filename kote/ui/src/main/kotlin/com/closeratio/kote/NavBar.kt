@@ -16,19 +16,29 @@
 
 package com.closeratio.kote
 
+import com.ccfraser.muirwik.components.*
 import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.RState
 import styled.styledDiv
 
-class App: RComponent<RProps, RState>() {
+class NavBar: RComponent<RProps, RState>() {
 
 	override fun RBuilder.render() {
 		styledDiv {
-			navBar()
-			courseList()
+
+			mAppBar(position = MAppBarPosition.static) {
+				mToolbar {
+					mTypography(
+							"React & Material-UI Sample Application",
+							variant = MTypographyVariant.h6,
+							color = MTypographyColor.inherit)
+				}
+
+			}
 		}
 	}
-
 }
+
+fun RBuilder.navBar() = child(NavBar::class) {}

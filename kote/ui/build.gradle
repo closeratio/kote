@@ -35,11 +35,10 @@ buildscript {
 	}
 }
 
-plugins {
-	id "kotlin2js"
-	id "com.moowork.node" version "1.2.0"
-}
+group = 'com.closeratio.kote.ui'
+version = '0.0.1-SNAPSHOT'
 
+apply plugin: "kotlin2js"
 apply plugin: 'org.jetbrains.kotlin.frontend'
 
 sourceCompatibility = 1.8
@@ -50,19 +49,33 @@ repositories {
 	maven { url "http://dl.bintray.com/kotlin/kotlin-js-wrappers" }
 }
 
-apply from: 'dependencies.gradle'
+dependencies {
+	implementation "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
+	implementation "org.jetbrains.kotlinx:kotlinx-html-js:${kotlinxHtmlVersion}"
+	implementation "org.jetbrains:kotlin-react:${reactVersion}"
+	implementation "org.jetbrains:kotlin-react-dom:${reactDomVersion}"
+	implementation "org.jetbrains:kotlin-styled:${styledVersion}"
+
+	implementation "com.ccfraser.muirwik:muirwik-components:${muirwikVersion}"
+}
 
 kotlinFrontend {
 	npm {
-		dependency "style-loader" // production dependency
+
 		dependency "react"
 		dependency "react-dom"
-		dependency "kotlin"
+		dependency "react-router"
+		dependency "style-loader"
 		dependency "inline-style-prefixer"
+
+		dependency "kotlin"
 		dependency "kotlinx-html-js"
 		dependency "kotlin-react"
 		dependency "kotlin-react-dom"
 		dependency "kotlin-styled"
+
+		dependency "@material-ui/core"
+		dependency "styled-components"
 		dependency "muirwik-components"
 	}
 

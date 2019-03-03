@@ -16,19 +16,8 @@
 
 package com.closeratio.kote
 
-import react.RBuilder
-import react.RComponent
-import react.RProps
 import react.RState
-import styled.styledDiv
 
-class App: RComponent<RProps, RState>() {
-
-	override fun RBuilder.render() {
-		styledDiv {
-			navBar()
-			courseList()
-		}
-	}
-
-}
+class CourseListState(
+		var courses: List<Course>,
+		var searchString: String): RState

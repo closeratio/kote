@@ -14,13 +14,30 @@
  * limitations under the License.
  */
 
-project(':kote:ui') {
-	dependencies {
-		implementation "org.jetbrains.kotlin:kotlin-stdlib-js:${kotlinVersion}"
-		implementation "org.jetbrains.kotlinx:kotlinx-html-js:${kotlinxHtmlVersion}"
-		implementation "org.jetbrains:kotlin-react:${reactVersion}"
-		implementation "org.jetbrains:kotlin-react-dom:${reactDomVersion}"
-		implementation "org.jetbrains:kotlin-styled:${styledVersion}"
-		implementation "com.ccfraser.muirwik:muirwik-components:${muirwikVersion}"
+package com.closeratio.kote
+
+class Course(
+		val name: String,
+		val description: String
+) {
+
+	override fun equals(other: Any?): Boolean {
+		if (this === other) return true
+		if (other == null || this::class.js != other::class.js) return false
+
+		other as Course
+
+		if (name != other.name) return false
+
+		return true
 	}
+
+	override fun hashCode(): Int {
+		return name.hashCode()
+	}
+
+	override fun toString(): String {
+		return "Course(name='$name')"
+	}
+
 }
