@@ -16,5 +16,9 @@
 
 package com.closeratio.kote
 
-class CourseProps(props: List<Course>) {
-}
+import kotlinext.js.assign
+import react.Component
+import react.RState
+
+fun <S : RState> Component<*, S>.setStateWithCallback(buildState: S.() -> Unit, callback: () -> Unit) =
+		setState({ assign(it, buildState) }, callback)

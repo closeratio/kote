@@ -22,7 +22,6 @@ import com.ccfraser.muirwik.components.MTextFieldMargin.normal
 import com.ccfraser.muirwik.components.mGridContainer
 import com.ccfraser.muirwik.components.mGridItem
 import com.ccfraser.muirwik.components.mTextField
-import kotlinext.js.assign
 import kotlinx.css.padding
 import kotlinx.css.px
 import org.w3c.dom.HTMLInputElement
@@ -62,10 +61,8 @@ class CourseList : RComponent<RProps, CourseListState>() {
 
 		val newSearchString = (event.target as HTMLInputElement).value
 
-		setState({
-			assign(it) {
-				searchString = newSearchString
-			}
+		setStateWithCallback({
+			searchString = newSearchString
 		}, {
 			getCourses()
 		})
@@ -73,34 +70,32 @@ class CourseList : RComponent<RProps, CourseListState>() {
 
 	override fun RBuilder.render() {
 		styledDiv {
-			styledDiv {
-				mTextField(
-						label = "",
-						id = "searchInput",
-						placeholder = "Search for Courses",
-						margin = normal,
-						onChange = { onSearchInputChange(it) }) {
-					css {
-						padding(24.px)
-					}
+			mTextField(
+					label = "",
+					id = "searchInput",
+					placeholder = "Search for Courses",
+					margin = normal,
+					onChange = { onSearchInputChange(it) }) {
+				css {
+					padding(24.px)
+				}
+			}
+
+			mGridContainer(
+					spacing = spacing24) {
+				css {
+					padding(24.px)
 				}
 
-				mGridContainer(
-						spacing = spacing24) {
-					css {
-						padding(24.px)
-					}
+				state.courses.forEach {
+					mGridItem(
+							xs = Cells12,
+							sm = Cells6,
+							lg = Cells4,
+							xl = Cells3) {
 
-					state.courses.forEach {
-						mGridItem(
-								xs = Cells12,
-								sm = Cells6,
-								lg = Cells4,
-								xl = Cells3) {
+						courseComponent(CourseComponentProps(it))
 
-							courseComponent(CourseComponentProps(it))
-
-						}
 					}
 				}
 			}
